@@ -1,0 +1,5 @@
+- Hi, I’m João Victor Menezes Amorim
+- 👀 I’m interested in learning more about web development!
+- 🌱 I’m currently learning Node, React and Electron!
+- I have experience in C, C++, Delphi(Pascal) and flutter.
+- 📫 To reach me, just send me a DM @VictorlMenezes or email victor--menezes@hotmail.com
