@@ -1,22 +1,21 @@
 class Order {
-  constructor(id, date, items, status = "Pending") {
+  constructor(id, date, items, entity, status = "Pending") {
     this.id = id;
     this.date = date;
     this.items = items;
+    this.entity = entity;
     this.status = status;
   }
 }
 
 class SellingOrder extends Order {
-  constructor(id, date, items, status = "Pending", costumer) {
-    super(id, date, items, status);
-    this.costumer = costumer;
+  constructor(id, date, items, entity, status = "Pending") {
+    super(id, date, items, entity, status);
   }
 }
 
 class BuyingOrder extends Order {
-  constructor(id, date, items, status = "Pending", provider) {
-    super(id, date, items, status);
-    this.provider = provider;
+  constructor(id, date, items, entity, status = "Pending") {
+    super(id, date, items, entity, status);
   }
 }
