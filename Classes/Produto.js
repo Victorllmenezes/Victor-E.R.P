@@ -30,7 +30,7 @@ class ProductItem extends Product {
     );
   }
 
-  lucro() {
-    return this.sellingPrice - sellingCost();
+  profit() {
+    return this.sellingPrice - this.sellingCost();
   }
 }
