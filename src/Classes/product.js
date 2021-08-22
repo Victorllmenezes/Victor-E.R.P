@@ -34,3 +34,5 @@ class ProductItem extends Product {
     return this.sellingPrice - this.sellingCost();
   }
 }
+
+module.exports = Product;
