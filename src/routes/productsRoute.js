@@ -1,48 +1,51 @@
 const express = require("express");
 const router = express.Router();
+const productWorker = require("../classes/workers/productWorker");
+const responses = require("../response/response");
+const product = require("../classes/product");
 
 // Returns all products
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const response = { mensagem: "Usando o get de Produtos" }; //GetAllProducts();
-    res.status(200).send(response);
+    const response = await productWorker.loadProducts();
+    responses.sendOk(res, response);
   } catch (error) {
-    next(error);
-  }
-});
-
-// Saves 1 product
-router.post("/", (req, res, next) => {
-  const productTeste = {
-    id: req.body.id,
-    descripiton: req.body.description,
-    purchasePrice: req.body.purchasePrice,
-    standardProfitMargin: req.body.standardProfitMargin,
-  };
-
-  try {
-    const response = {
-      status: 201,
-      message: "Created",
-      product: productTeste,
-    }; //SaveProduct(product);
-    res.status(201).send(response);
-  } catch (error) {
-    next(error);
+    responses.sendInternalServerError(res);
   }
 });
 
 // Returns 1 product
-router.get("/:ProductId", (req, res, next) => {
-  const id = req.params.ProductId;
+router.get("/:ProductId", async (req, res, next) => {
+  const id = parseInt(req.params.ProductId);
+  const isIdValid = !isNaN(parseInt(id));
+  if (!isIdValid) responses.sendBadRequest(res);
   try {
-    const response = {
-      mensagem: "Usando o get especifico de Produto",
-      id: id,
-    }; //GetProduct(id);
-    res.status(200).send(response);
+    const response = await productWorker.loadProduct(id);
+    response === undefined
+      ? responses.sendErrorNotFound(res)
+      : responses.sendOk(res, response);
   } catch (error) {
-    next(error);
+    responses.sendInternalServerError(res);
+  }
+});
+
+// Saves 1 product
+router.post("/", async (req, res, next) => {
+  const requestObject = new product(
+    req.body.id,
+    req.body.description,
+    req.body.purchasePrice,
+    req.body.standardProfitMargin
+  );
+  try {
+    await productWorker.saveProduct(requestObject);
+    responses.sendOk(res, requestObject);
+  } catch (error) {
+    //responses.sendInternalServerError(res);
+    res.status(error.status || 500).send({
+      error: error.status || 500,
+      message: error.message,
+    });
   }
 });
 

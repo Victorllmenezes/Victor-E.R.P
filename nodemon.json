@@ -1,0 +1,9 @@
+{
+  "env": {
+    "MYSQL_USER": "RCA",
+    "MYSQL_PASSWORD": "@RcaRoot",
+    "MYSQL_DATABASE": "BancoRCA",
+    "MYSQL_HOST": "localhost",
+    "MYSQL_PORT": 3306
+  }
+}
