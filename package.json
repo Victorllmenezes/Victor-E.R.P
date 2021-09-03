@@ -1,24 +1,24 @@
 {
-  "name": "Victor-E.R.P",
+  "name": "sqlnode",
   "version": "1.0.0",
-  "description": "E.R.P.",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://github.com/Victorllmenezes/Victor-E.R.P.git",
-  "author": "Joao Victor Menezes Amorim",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.3.0"
+    "mysql2": "^2.3.0",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.12",
-    "request": "^2.88.2"
+    "sequelize-cli": "^6.2.0"
   }
 }

@@ -1,20 +1,20 @@
 function sendInternalServerError(res) {
   res.status(500).send({
-    status: 500,
+    error: 500,
     message: "Internal Server Error",
   });
 }
 
 function sendErrorNotFound(res) {
   res.status(404).send({
-    status: 404,
+    error: 404,
     message: "Error Not Found!",
   });
 }
 
 function sendBadRequest(res) {
   res.status(400).send({
-    status: 400,
+    error: 400,
     message: "Bad Request!",
   });
 }
