@@ -5,6 +5,6 @@ const ProductsController = require("../controllers/ProductController");
 
 routes.post("/", ProductsController.saveProduct);
 routes.get("/", ProductsController.getAllProducts);
-routes.get("/:entity_id", ProductsController.getAProduct);
+routes.get("/:product_id", ProductsController.getAProduct);
 
 module.exports = routes;
